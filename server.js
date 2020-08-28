@@ -6,11 +6,13 @@ const sequelize = require('./config/connection');
 
 
 const exphbs = require('express-handlebars'); //added for handlebars to view homepage **NOT WORKING**
-const hbs = exphbs.create({}); //added for handlebars to view homepage
+// const hbs = exphbs.create({}); //added for handlebars to view homepage
 
 
 
 const app = express();
+const hbs = exphbs.create({});
+
 const PORT = process.env.PORT || 3001;
 
 app.engine('handlebars', hbs.engine);
