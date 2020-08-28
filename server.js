@@ -1,7 +1,9 @@
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+//not working to display css
 const path = require('path');
+
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
@@ -16,7 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 //turn on routes
 app.use(routes);
 
-app.use(express.static(path.join(__dirname, 'public')));
+//not working
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
