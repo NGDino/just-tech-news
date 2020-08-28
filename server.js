@@ -1,15 +1,19 @@
-const express = require('express');
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
-//not working to display css
-const path = require('path');
 
-const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const path = require('path'); //new to add css **notworking**
+
+const express = require('express');
+const routes = require('./controllers'); //new changed file name api endpoints ARE working
+const sequelize = require('./config/connection');
+
+
+
+const exphbs = require('express-handlebars'); //added for handlebars to view homepage **NOT WORKING**
+const hbs = exphbs.create({}); //added for handlebars to view homepage
 
 
 
 const app = express();
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
@@ -18,8 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 //turn on routes
 app.use(routes);
 
-//not working
-app.use('/static', express.static(path.join(__dirname, 'public')))
+//links to the publice directory (location of CSS file ) **NOT WORKING**
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
